@@ -1,5 +1,5 @@
 blueprint:
-  name: Sync Two Lights On/Off
+  name: Sync Lights On/Off
   description: When one of the selected lights is turned on or off, the other is synchronized to match.
   domain: automation
   input:
