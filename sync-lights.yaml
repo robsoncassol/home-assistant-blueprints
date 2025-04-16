@@ -1,0 +1,45 @@
+blueprint:
+  name: Sync Two Lights On/Off
+  description: >
+    When one of the selected lights is turned on or off, the other is synchronized to match.
+  domain: automation
+  input:
+    lights:
+      name: Lights
+      description: Select two or more lights to sync together.
+      selector:
+        target:
+          entity:
+            domain: light
+            multiple: true
+
+trigger:
+  - platform: state
+    entity_id: !input lights
+    to: "on"
+    id: light_on
+  - platform: state
+    entity_id: !input lights
+    to: "off"
+    id: light_off
+
+condition: []
+
+action:
+  - choose:
+      - conditions:
+          - condition: trigger
+            id: light_on
+        sequence:
+          - service: light.turn_on
+            target:
+              entity_id: !input lights
+      - conditions:
+          - condition: trigger
+            id: light_off
+        sequence:
+          - service: light.turn_off
+            target:
+              entity_id: !input lights
+
+mode: single
