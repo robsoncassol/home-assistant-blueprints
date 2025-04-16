@@ -1,14 +1,12 @@
 blueprint:
   name: Sync Two Lights On/Off
-  description: >
-    When one of the selected lights is turned on or off, the other is synchronized to match.
+  description: When one of the selected lights is turned on or off, the other is synchronized to match.
   domain: automation
   input:
     lights:
       name: Lights
       description: Select two or more lights to sync together.
       selector:
-        target:
           entity:
             domain: 
               - switch
