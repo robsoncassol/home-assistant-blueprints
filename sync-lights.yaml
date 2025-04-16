@@ -10,7 +10,9 @@ blueprint:
       selector:
         target:
           entity:
-            domain: light
+            domain: 
+              - switch
+              - light
             multiple: true
 
 trigger:
